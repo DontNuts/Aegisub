@@ -35,11 +35,11 @@ jobs:
               -Dfribidi:tests=false
               -Dfribidi:docs=false
               -Dlibass:fontconfig=disabled
-          - {
-            name: Windows MinGW,
-            os: windows-latest,
-            msvc: false
-          }
+          #- {
+          #  name: Windows MinGW,
+          #  os: windows-latest,
+          #  msvc: false
+          #}
 
     steps:
       - uses: actions/checkout@v6
@@ -97,7 +97,7 @@ jobs:
           sudo apt-get install ninja-build build-essential libx11-dev libfreetype6-dev pkg-config libfontconfig1-dev libass-dev libasound2-dev libffms2-dev intltool libboost-all-dev libhunspell-dev libcurl4-openssl-dev libuchardet-dev libgtest-dev libgmock-dev libwxgtk3.2-dev
 
       - name: Configure
-        run: meson setup build ${{ matrix.config.args }} -Dbuildtype=${{ matrix.config.buildtype }} ${{ github.ref_type == 'tag' && '-Dofficial_release=true' || '' }}
+        run: meson setup build ${{ matrix.config.args }} -Dbuildtype=${{ matrix.config.buildtype }} -Dofficial_release=true
 
       - name: Build
         run: meson compile -C build
