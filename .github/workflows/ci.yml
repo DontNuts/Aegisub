@@ -35,11 +35,11 @@ jobs:
               -Dfribidi:tests=false
               -Dfribidi:docs=false
               -Dlibass:fontconfig=disabled
-          #- {
-          #  name: Windows MinGW,
-          #  os: windows-latest,
-          #  msvc: false
-          #}
+          - {
+            name: Windows MinGW,
+            os: windows-latest,
+            msvc: false
+          }
 
     steps:
       - uses: actions/checkout@v6
